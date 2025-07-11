@@ -169,8 +169,8 @@ const PrivacyPolicy = () => {
                 <li>Withdraw consent</li>
               </ul>
               <p className="mb-6">
-                Contact our privacy team at 123@unique.in. We respond within 30
-                days.
+                Contact our privacy team at support@finuniques.in . We respond
+                within 30 days.
               </p>
 
               <h2 className="text-xl font-bold text-white mb-2">
@@ -212,11 +212,22 @@ const PrivacyPolicy = () => {
               <h2 className="text-xl font-bold text-white mb-2">
                 9. Contact Our Privacy Team
               </h2>
-              <p className="mb-1">Phone: [Add Number]</p>
-              <p className="mb-1">Email: 123@unique.in</p>
+              <p className="mb-1">Phone: 0141-4511098</p>
+              <p className="mb-1">
+                Email:{" "}
+                <a href="mailto:support@finuniques.in" className="underline">
+                  support@finuniques.in
+                </a>
+              </p>
+              <p className="mb-1">
+                Email:{" "}
+                <a href="mailto:support@finuniques.in" className="underline">
+                  info@finuniques.in
+                </a>
+              </p>
               <p className="mb-6">
-                Address: Plot No 97, Dakshinpuri - I, Shri Kishanpura, Sanganer,
-                Rajasthan, India – 302017
+                Address: Plot No 97, Dakshinpuri - I, Shrikishan, Sanganer,
+                Jagatpura, Jaipur Rajasthan, India, 302017
               </p>
 
               <h2 className="text-xl font-bold text-white mb-2">

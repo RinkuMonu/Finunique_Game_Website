@@ -31,6 +31,7 @@ import { PotPokar } from "./Games/Poker/Pot-limmt/pot";
 import { PLOpokar } from "./Games/Poker/Pot-liimt (PLO)/PLO";
 import BlogPage from "./Blog/BlogPage";
 import BlogPostDetail from "./Blog/Extradetails";
+import ContentPolicy from "./contentPolicy/contentpolicy";
 function App() {
   return (
     <>
@@ -49,6 +50,7 @@ function App() {
             path="/return_cancellation"
             element={<ReturnAndCancelation />}
           />
+          <Route path="/content_policy" element={<ContentPolicy />} />
           <Route path="/game_rummy" element={<RummyGame />} />
           <Route path="/game_pool" element={<PoolGame />} />
           <Route path="/game_poker" element={<PokerGame />} />

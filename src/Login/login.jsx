@@ -61,16 +61,18 @@ const LoginPage = () => {
 
     setSendingOtp(true);
     const toastId = toast.loading("Sending OTP...");
+
     try {
       const res = await api.post("/auth/send-otp", {
         mobile: watch("mobile"),
         forLogin: true,
       });
-      toast.success(res.data.message);
+
+      toast.dismiss(toastId); // ✅ dismiss loader
+      toast.success(res.data.message); // ✅ show success
     } catch (err) {
-      if (toast.isActive(toastId)) {
-        toast.error(err?.response?.data?.message || "Failed to send OTP");
-      }
+      toast.dismiss(toastId); // ✅ dismiss loader
+      toast.error(err?.response?.data?.message || "Failed to send OTP");
     } finally {
       setSendingOtp(false);
     }

@@ -5,7 +5,7 @@ import blogImg from "../assets/bannerimg/blogbanner.jpg";
 
 const cleanContent = (html) => {
   return DOMPurify.sanitize(html, {
-    FORBID_ATTR: ["style"], // removes inline styles
+    FORBID_ATTR: [""], // removes inline styles
   });
 };
 
@@ -137,7 +137,7 @@ const BlogPostDetail = () => {
         </p>
         <button
           onClick={() => window.history.back()}
-          className="px-6 py-2 bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-medium rounded-lg transition-colors flex items-center gap-2"
+          className=" px-6 py-2 bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-medium rounded-lg transition-colors flex items-center gap-2"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -161,13 +161,13 @@ const BlogPostDetail = () => {
     <div
       className=" min-h-screen "
       style={{
-        background: "linear-gradient(to bottom, #0B050C, #340408)",
+        background: "#f5c9b8",
         boxShadow: "0 0 10px #221624",
       }}
     >
       {/* Hero Section */}
       <div
-        className="relative bg-black/2 0 opacity-70 py-16"
+        className="relative bg-black/20 opacity-90 py-16"
         style={{
           backgroundImage: `url(${blogImg})`,
           backgroundSize: "cover",
@@ -232,16 +232,32 @@ const BlogPostDetail = () => {
 
           <div className="">
             <div
-              className="prose prose-invert max-w-none p-5 text-white [&_*]:text-white"
+              className="max-w-none p-5 text-white"
               dangerouslySetInnerHTML={{ __html: post.content }}
               style={{
-                background: "linear-gradient(to bottom, #0B050C, #340408)",
-                boxShadow: "0 0 10px #221624",
+                lineHeight: "1.8",
+                fontSize: "1rem",
               }}
             />
           </div>
         </div>
-
+        <button className="mb-6 inline-flex items-center px-4 py-2 bg-gray-900 bg-opacity-50 text-white rounded-lg hover:bg-opacity-70 transition-all mt-5 cursor-pointer">
+          <Link to={"/our_blog"} className="inline-flex items-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5 mr-2"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
+                clipRule="evenodd"
+              />
+            </svg>
+            Back to Blog
+          </Link>
+        </button>
         {/* Author Section */}
         <div className="mt-12 bg-gray-800 rounded-xl p-6 flex items-center">
           <div className="w-16 h-16 rounded-full bg-gray-700 flex items-center justify-center text-2xl font-bold text-yellow-400">
@@ -258,7 +274,7 @@ const BlogPostDetail = () => {
         {/* Related Posts */}
         {/* {relatedPosts.length > 0 && ( */}
         <div className="mt-16">
-          <h2 className="text-2xl font-bold text-white mb-6">
+          <h2 className="text-2xl font-bold text-gray-700 mb-6">
             More Betting Insights
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

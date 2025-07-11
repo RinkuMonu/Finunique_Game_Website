@@ -134,6 +134,11 @@ const Footer = () => {
                   Return & Cancellation
                 </Link>
               </li>
+              <li className="text-center sm:text-left">
+                <Link to="/content_policy" className="hover:text-red-400">
+                  Content Policy
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -179,21 +184,6 @@ const Footer = () => {
                     dangerouslySetInnerHTML={{ __html: social.icon_class }}
                   />
                 ))}
-              </div>
-
-              {/* WhatsApp Support */}
-              <div className="mt-3">
-                <a
-                  href="https://wa.me/919341436937?text=Hi%20I%20want%20to%20know%20more"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block text-red-400 hover:underline"
-                >
-                  <div className="flex justify-center sm:justify-start items-center gap-2">
-                    <FaWhatsapp />
-                    Contact Support
-                  </div>
-                </a>
               </div>
             </div>
           </div>

@@ -255,11 +255,12 @@ const TermsAndConditions = () => {
                   <li>Your account remains inactive for an extended period</li>
                 </ul>
                 <p className="mt-4 font-semibold">Contact Information</p>
-                <p>Email: [Add Email]</p>
-                <p>Phone: [Add Phone]</p>
+                <p>Email: info@finuniques.in</p>
+                <p>Email: support@finuniques.in</p>
+                <p>Phone: 0141-4511098</p>
                 <p>
                   Address: Plot No 97, Dakshinpuri - I, Shri Kishanpura,
-                  Sanganer, Rajasthan, India – 302017
+                  Sanganer, Jagatpura, Rajasthan, India – 302017
                 </p>
                 <p className="mt-4 font-semibold">Agreement Acknowledgment</p>
                 <p>
@@ -267,8 +268,12 @@ const TermsAndConditions = () => {
                   acknowledge that you have read, understood, and agree to be
                   bound by these Terms and Conditions.
                 </p>
-                <p>I Accept – Create Account</p>
-                <p>Have Questions? Contact Us</p>
+                <p>
+                  I Accept – <a href="/register" className="underline"> Create Account</a>
+                </p>
+                <p>
+                  Have Questions? <a href="/contactus" className="underline"> Contact Us</a>
+                </p>
               </section>
             </div>
           </div>

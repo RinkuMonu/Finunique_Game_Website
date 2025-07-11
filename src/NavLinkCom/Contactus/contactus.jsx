@@ -1,16 +1,18 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import { FaEnvelope, FaMapMarkerAlt, FaTimes } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import bgcimg from "../../assets/bannerimg/contactus.png";
 import { DownloadCTA } from "../../DownloadAPK/DownloadCTA";
 import { ContextData } from "../../Service/context";
 import SEO from "../../Reuseable Com/SeoHelment";
+import { Toaster } from "react-hot-toast";
 
 export default function ContactUs() {
   const [loading, setLoading] = useState(false);
   const [contactDetails, setContactDetails] = useState(null);
+  const [showThankYou, setShowThankYou] = useState(false);
   const { seo } = useContext(ContextData);
 
   const {
@@ -18,6 +20,7 @@ export default function ContactUs() {
     handleSubmit,
     formState: { errors },
     trigger,
+    reset,
   } = useForm({ mode: "onChange" });
 
   useEffect(() => {
@@ -43,6 +46,7 @@ export default function ContactUs() {
     };
     fetchContactDetails();
   }, []);
+
   const onSubmit = async (data) => {
     const valid = await trigger();
     if (!valid) return;
@@ -68,9 +72,10 @@ export default function ContactUs() {
         }
       );
       const result = await response.json();
-      // console.log(result);
+
       if (result.status) {
-        toast.success("team will contact you soon!");
+        reset();
+        setShowThankYou(true);
       }
     } catch (error) {
       toast.error("Something went wrong. Please try again later.");
@@ -81,6 +86,7 @@ export default function ContactUs() {
 
   return (
     <>
+      <Toaster />
       <SEO
         meta_title={seo?.meta_title}
         meta_description={seo?.meta_description}
@@ -93,6 +99,48 @@ export default function ContactUs() {
         og_site_name={seo?.og_site_name}
         canonical_tag={seo?.canonical_tag}
       />
+
+      {/* Thank You Modal */}
+      {showThankYou && (
+        <div className="fixed inset-0 bg-black/70 bg-opacity-70 z-50 flex items-center justify-center p-4">
+          <div className="bg-[#1a0a1a] rounded-lg p-6 max-w-md w-full relative border border-pink-500">
+            <button
+              onClick={() => setShowThankYou(false)}
+              className="absolute top-3 right-3 text-gray-400 hover:text-white"
+            >
+              <FaTimes />
+            </button>
+            <div className="text-center">
+              <svg
+                className="mx-auto h-16 w-16 text-green-500"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M5 13l4 4L19 7"
+                ></path>
+              </svg>
+              <h3 className="text-2xl font-bold text-white mt-4">Thank You!</h3>
+              <p className="mt-2 text-gray-300">
+                Your message has been successfully submitted. Our team will get
+                back to you soon.
+              </p>
+              <button
+                onClick={() => setShowThankYou(false)}
+                className="mt-6 bg-gradient-to-r from-pink-500 to-red-600 text-white py-2 px-6 rounded-md hover:opacity-90 transition"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div
         className="bg-[#0B050C] text-white py-10 px-4 tracking-wider lg:h-[90vh]"
         style={{ background: "linear-gradient(to bottom, #11050B, #11050B)" }}

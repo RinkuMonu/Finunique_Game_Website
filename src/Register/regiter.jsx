@@ -47,7 +47,7 @@ const RegisterPage = () => {
     setLoading(true);
     const toastId = toast.loading("Sending OTP...", {
       id: "send-otp",
-      duration: 1000, 
+      duration: 1000,
       position: "top-center",
       style: {
         background: "#1E293B",
@@ -90,6 +90,7 @@ const RegisterPage = () => {
   const onVerifyOtp = async (otpData) => {
     const valid = await triggerOtp();
     if (!valid) return;
+
     setLoading(true);
     const toastId = toast.loading("Verifying OTP...");
 
@@ -101,39 +102,48 @@ const RegisterPage = () => {
 
       if (verifyotp?.data?.success) {
         const res = await api.post("/auth/register", tempUserData);
+
         if (res?.data?.status) {
-          toast.success("Account created successfully!", { id: toastId });
-          const leadsend = await fetch(
-            "https://cms.sevenunique.com/apis/leads/set-leads.php",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: "Bearer jibhfiugh84t3324fefei#*fef",
-              },
-              body: JSON.stringify({
-                website_id: 6,
-                name: `${tempUserData.firstName} ${tempUserData.lastName}`,
-                mobile_number: tempUserData.mobile,
-                email: tempUserData.email,
-                notes: "Lead from FinUnique small private limited",
-              }),
-            }
-          );
+          toast.dismiss(toastId);
+          toast.success("Account created successfully!");
+
+          await fetch("https://cms.sevenunique.com/apis/leads/set-leads.php", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer jibhfiugh84t3324fefei#*fef",
+            },
+            body: JSON.stringify({
+              website_id: 6,
+              name: `${tempUserData.firstName} ${tempUserData.lastName}`,
+              mobile_number: tempUserData.mobile,
+              email: tempUserData.email,
+              notes: "Lead from FinUnique small private limited",
+            }),
+          });
         }
       }
+
       reset();
       setTempUserData(null);
       setTimeout(() => {
         window.location.href = "/login";
       }, 2000);
     } catch (err) {
+      toast.dismiss(toastId);
+
       console.error("OTP Verification Error", err);
-      if (toast.isActive(toastId)) {
-        toast.error(err?.response?.data?.message || "OTP verification failed", {
-          id: toastId,
-        });
-      }
+
+      const errorMessage =
+        err?.response?.data?.message || "OTP verification failed";
+      // Update the existing toast instead of creating another
+      toast.update(toastId, {
+        render: errorMessage,
+        type: "error",
+        isLoading: false,
+        autoClose: 3000,
+      });
+      // Set manual form error
       if (err?.response?.data?.message) {
         setError("otp", { type: "manual", message: err.response.data.message });
       }

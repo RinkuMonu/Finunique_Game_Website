@@ -177,7 +177,16 @@ const ReturnAndCancelation = () => {
                       </div>
                       <div>
                         <h3 className="font-medium text-white">Email</h3>
-                        <p className="text-[#5e0d0d]">support@finunique.in</p>
+                        <p className="text-[#bebdbd]">
+                          <a href="mailto:support@finuniques.in" className="underline">
+                            support@finuniques.in
+                          </a>
+                        </p>
+                        <p className="text-[#bebdbd]">
+                          <a href="mailto:support@finuniques.in" className="underline">
+                            info@finuniques.in
+                          </a>
+                        </p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
@@ -191,7 +200,7 @@ const ReturnAndCancelation = () => {
                         <address className="text-gray-300 not-italic">
                           Plot No 97, Dakshinpuri - I,
                           <br />
-                          Shri Kishanpura, Sanganer,
+                          Shri Kishanpura, Sanganer, Jagatpura,
                           <br />
                           Rajasthan, India – 302017
                         </address>

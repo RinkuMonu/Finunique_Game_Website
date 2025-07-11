@@ -18,7 +18,6 @@ const LoginPage = () => {
   const [loading, setLoading] = useState(false);
   const [loginMode, setLoginMode] = useState("password");
   const [sendingOtp, setSendingOtp] = useState(false);
-
   const {
     register,
     handleSubmit,

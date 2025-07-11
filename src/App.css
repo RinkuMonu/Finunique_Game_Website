@@ -1,0 +1,20 @@
+@import "tailwindcss";
+@tailwind utilities;
+
+@layer utilities {
+  .animate-slideDown {
+    @apply transform transition-transform duration-500 ease-in-out;
+    animation: slideDown 0.4s ease forwards;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

@@ -24,6 +24,7 @@ const LoginPage = () => {
     formState: { errors },
     trigger,
     watch,
+    reset,
   } = useForm({ mode: "onChange" });
 
   const data = watch();
@@ -257,7 +258,10 @@ const LoginPage = () => {
                       ? "bg-red-700 text-white"
                       : "bg-gray-700 text-gray-300"
                   }`}
-                  onClick={() => setLoginMode("password")}
+                  onClick={() => {
+                    setLoginMode("password");
+                    reset();
+                  }}
                 >
                   Login with Password
                 </button>
@@ -268,7 +272,10 @@ const LoginPage = () => {
                       ? "bg-red-700 text-white"
                       : "bg-gray-700 text-gray-300"
                   }`}
-                  onClick={() => setLoginMode("otp")}
+                  onClick={() => {
+                    setLoginMode("otp");
+                    reset();
+                  }}
                 >
                   Login with OTP
                 </button>

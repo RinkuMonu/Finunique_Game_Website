@@ -163,7 +163,7 @@ const Footer = () => {
                 {(contactDetails?.email || "").split(",").map((email, i) => (
                   <a
                     key={i}
-                    href={`mailto:${email.trim()}`}
+                    href={`mailto:${email.trim()}?subject=Support%20Query&body=Hi%20Team,`}
                     className="text-sm text-gray-300 hover:underline flex gap-1.5 items-center justify-center sm:justify-start"
                   >
                     <MdEmail className="mt-0.5" size={15} />
